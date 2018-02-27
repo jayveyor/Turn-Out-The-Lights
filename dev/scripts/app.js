@@ -163,20 +163,22 @@ class App extends React.Component {
   // }
 
   componentDidMount() {
-    
-    var obj = document.createElement("audio");
-    obj.src = "../../background4.wav";
-    obj.volume = .7;
-    obj.loop = true;
-    obj.preLoad = true;
-    if (this.state.mute === true) {
-      obj.pause();
-      console.log('wow')
-    } else {
-      obj.play();
-      console.log('wowasdas')
-    }
+
     firebase.auth().onAuthStateChanged((user) => {
+
+
+      var obj = document.createElement("audio");
+      obj.src = "background4.wav";
+      obj.volume = .7;
+      obj.loop = true;
+      obj.preLoad = true;
+      if (this.state.mute === true) {
+        obj.pause();
+        console.log('wow')
+      } else {
+        obj.play();
+        console.log('wowasdas')
+      }
       
       if (user) {
        const dbref = firebase.database().ref(`/users/${firebase.auth().currentUser.uid}`);
@@ -246,7 +248,7 @@ class App extends React.Component {
   decreaseHealth() {
 
     var obj = document.createElement("audio");
-    obj.src = "../../pain.wav";
+    obj.src = "pain.wav";
     obj.volume = 1;
     obj.autoPlay = false;
     obj.preLoad = true;
@@ -429,9 +431,9 @@ class App extends React.Component {
 
     let onOffImg;
       if (this.state.flashlight) {
-        onOffImg = (<img src="../../flashlight-on.png" alt="your flashlight" />)
+        onOffImg = (<img src="flashlight-on.png" alt="your flashlight" />)
       } else {
-        onOffImg = (<img src="../../flashlight-off.png" alt="your flashlight" />)
+        onOffImg = (<img src="flashlight-off.png" alt="your flashlight" />)
       };
       let onOff;
       if (this.state.flashlight) {
@@ -499,7 +501,7 @@ class App extends React.Component {
       location = (<div className="background location4"></div>
       )
       // battery room
-      gameObject = (<img className="battery" onClick={this.collectBattery} src="../../battery.png" alt="A Battery!" />)
+      gameObject = (<img className="battery" onClick={this.collectBattery} src="battery.png" alt="A Battery!" />)
 
       buttons = (
         <div className="navigation">
@@ -537,7 +539,7 @@ class App extends React.Component {
           </div></div>
       )
     }  else if (this.state.locationX === -1 && this.state.locationY === 4) {
-      gameObject = (<img className ="ghoul" onClick={this.youWin} src="../../Ghoul.png" alt="Someone"/> )
+      gameObject = (<img className ="ghoul" onClick={this.youWin} src="ghoul.png" alt="Someone"/> )
       location = (<div className="background location7"></div>
       )
       // end room
@@ -593,7 +595,7 @@ class App extends React.Component {
         <div className="dark" > </div>
       )
       flashlightImg = (
-        <img src="../../flashlight-off.png" alt="your flashlight" />
+        <img src="flashlight-off.png" alt="your flashlight" />
       )
     };
 
@@ -638,7 +640,7 @@ class App extends React.Component {
           <div className="wrap">
           <div className="flex">
           <h1>Turn Out The Lights</h1>
-          <img src="../../lamp.gif" alt="a lamp" />
+          <img src="lamp.gif" alt="a lamp" />
                 <form onSubmit={(event) => this.loginPage(event)}>
                 <input value="Enter" type="submit" />
           </form>
