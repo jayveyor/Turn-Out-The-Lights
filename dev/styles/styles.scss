@@ -345,7 +345,7 @@ body {
 
 .game {
     grid-area: game;
-    min-height: 350px;
+    min-height: 400px;
     overflow: hidden;
     position: relative;
 }
@@ -683,4 +683,12 @@ font-size: 2rem;
     #app {
         width: 100%;
     }
+}
+
+button {
+    min-height:50px;
+    min-width: 50px;
+    color:white;
+    background-color:black;
+    font-family: $font2;
 }
