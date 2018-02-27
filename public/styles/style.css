@@ -615,7 +615,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 325px; }
+  width: 325px;
+  grid-area: flashlight; }
 
 .flashlight img {
   height: 120px;
@@ -656,14 +657,17 @@ body {
 
 .user .grid {
   display: grid;
-  grid-template-areas: "name life" "button heart";
+  grid-template-areas: " . . . . . " " . name life flashlight battery" " . button heart flashlight battery";
   grid-row-gap: 20px;
-  grid-column-gap: 70px;
-  height: 70%; }
+  grid-column-gap: 50px;
+  height: 70%;
+  margin: auto;
+  grid-auto-columns: 0% 10% 10% 40% 10%; }
 
 .characterName {
   grid-area: name;
-  font-size: 2rem; }
+  font-size: 2rem;
+  text-align: center; }
 
 .user .grid input {
   grid-area: button; }
@@ -676,11 +680,15 @@ body {
   grid-area: life;
   font-size: 1.4rem; }
 
+.batteries {
+  grid-area: battery; }
+
 .batteries img {
   margin-top: 15px; }
 
 .batteries h2 {
-  width: 90px; }
+  width: 90px;
+  margin: 15px auto; }
 
 .user {
   grid-area: user;
@@ -690,6 +698,17 @@ body {
   align-items: center;
   justify-content: space-around; }
 
+button {
+  min-height: 50px;
+  min-width: 50px;
+  color: white;
+  background-color: black;
+  font-family: "Press Start 2P", sans-serif; }
+
+button:disabled {
+  color: #949393;
+  background-color: #1e1e1f; }
+
 @media (max-width: 1067px) {
   #app {
     width: 90%; }
@@ -698,11 +717,56 @@ body {
 
 @media (max-width: 850px) {
   #app {
-    width: 100%; } }
+    width: 100%; }
+  .navigation {
+    top: 50px; }
+  .signOut {
+    bottom: 50px;
+    height: 50px;
+    top: auto;
+    right: 10px; } }
 
-button {
-  min-height: 50px;
-  min-width: 50px;
-  color: white;
-  background-color: black;
-  font-family: "Press Start 2P", sans-serif; }
+@media (max-width: 750px) {
+  .game {
+    height: 300px; }
+  .user {
+    height: 200px; }
+  .user .grid {
+    grid-template-areas: " . . . . " " . name life flashlight"  " . battery heart flashlight";
+    grid-auto-columns: 0% 10% 10% 40%; }
+  .signOut {
+    right: 30px; } }
+
+@media (max-width: 650px) {
+  .game {
+    width: 550px; } }
+
+@media (max-width: 550px) {
+  .game {
+    width: 450px; }
+  .flashlight {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start; }
+  .user .grid {
+    grid-row-gap: 0px;
+    grid-template-areas: " . . . " " name life flashlight" " battery heart flashlight";
+    grid-auto-columns: 10% 10% 40%; }
+  .batteryLife {
+    transform: rotate(0.25turn);
+    align-self: center;
+    margin-top: -25px; }
+  .flashlight {
+    width: 100px; }
+  .flashlight img {
+    padding: 5px; }
+  .signOut {
+    right: 0px; }
+  .navigation {
+    bottom: 50px;
+    top: auto;
+    left: auto; }
+  .battery {
+    position: absolute;
+    left: 50%;
+    top: 20%; } }

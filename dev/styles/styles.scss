@@ -581,6 +581,7 @@ animation: fade-out 2s ease-out both;
     justify-content: space-between;
     align-items: center;
     width: 325px;
+    grid-area:flashlight;
 }
 
 .flashlight img {
@@ -627,15 +628,21 @@ animation: fade-out 2s ease-out both;
 
 .user .grid {
     display: grid;
-    grid-template-areas: "name life"
-    "button heart";
+    grid-template-areas: 
+    " . . . . . "
+    " . name life flashlight battery"
+    " . button heart flashlight battery";
         grid-row-gap: 20px;
-        grid-column-gap: 70px;
+        grid-column-gap: 50px;
         height:70%;
+        margin:auto;
+        grid-auto-columns: 0% 10% 10% 40% 10%;
+
 }
 .characterName {
 grid-area: name;
 font-size: 2rem;
+text-align:center;
 }
 
 
@@ -651,13 +658,17 @@ font-size: 2rem;
     grid-area: life;
     font-size: 1.4rem;
 }
-
+.batteries {
+    grid-area:battery;
+}
 .batteries img {
     margin-top:15px;
 }
 
 .batteries h2 {
  width:90px;
+ margin: 15px auto;
+ 
 }
 
 .user {
@@ -668,6 +679,19 @@ font-size: 2rem;
 .user .flex {
     align-items: center;
     justify-content: space-around;
+}
+
+button {
+    min-height: 50px;
+    min-width: 50px;
+    color: white;
+    background-color: black;
+    font-family: $font2;
+}
+
+button:disabled {
+    color: rgb(148, 147, 147);
+    background-color: rgb(30, 30, 31);
 }
 
 @media (max-width: 1067px) {
@@ -683,12 +707,87 @@ font-size: 2rem;
     #app {
         width: 100%;
     }
+
+    .navigation {
+        top:50px;
+    }
+    .signOut {
+        bottom:50px;
+        height:50px;
+        top:auto;
+        right:10px;
+    }
 }
 
-button {
-    min-height:50px;
-    min-width: 50px;
-    color:white;
-    background-color:black;
-    font-family: $font2;
+@media (max-width: 750px) {
+    
+    .game {
+        height:300px;
+    }
+    .user {
+        height: 200px;
+    }
+
+    .user .grid {
+        grid-template-areas : " . . . . "
+         " . name life flashlight" 
+         " . battery heart flashlight";
+          grid-auto-columns: 0% 10% 10% 40%;
+    }
+
+    .signOut {
+        right: 30px;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .game {
+        width: 550px;
+    }
+}
+
+@media (max-width: 550px) {
+    .game {
+        width: 450px;
+    }
+    .flashlight {
+        flex-direction: column;
+        height:auto;
+        align-items: flex-start;
+    }
+    .user .grid {
+        grid-row-gap: 0px;
+         grid-template-areas: " . . . " " name life flashlight" " battery heart flashlight";
+         grid-auto-columns: 10% 10% 40%;
+     }
+
+    .batteryLife {
+        transform: rotate(0.25turn);
+        align-self:center;
+        margin-top:-25px;
+    }
+    .flashlight {
+        width: 100px;
+    }
+    .flashlight img {
+        padding: 5px;
+    }
+
+    .signOut {
+        right: 0px;
+    }
+
+    .navigation {
+        bottom: 50px;
+        top:auto;
+        left:auto;
+    }
+
+    .battery {
+        position: absolute;
+        left: 50%;
+        top: 20%;
+    }
+
 }
