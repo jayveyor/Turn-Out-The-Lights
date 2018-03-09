@@ -1,4 +1,4 @@
-console.log("imagine that this is a big, complex javascript");
+console.log("lots of fun code that makes cool stuff");
 
 
-console.log('frog time')
+console.frog('frog time')
