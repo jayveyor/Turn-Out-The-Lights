@@ -5,8 +5,8 @@ cache:
   directories:
     - "node_modules"
 install: npm install
-#script:
-#  - node index.js
+script:
+  - node index.js
 #notifications:
 #  slack: buildingpipelines:PB1uV6U8DGpMFX9ZPhhboD55
 ##    rooms:
