@@ -5,16 +5,16 @@ cache:
   directories:
     - "node_modules"
 install: npm install
-script:
-  - node index.js
-notifications:
-  slack: buildingpipelines:PB1uV6U8DGpMFX9ZPhhboD55
-#    rooms:
-#      - leanintuit:4TbhlQX6AdNBl5hTK0PubKnh#engineering_training
-    on_success: always
-    on_failure: always
-   email:
-    - jayveyor@gmail.com
+#script:
+#  - node index.js
+#notifications:
+#  slack: buildingpipelines:PB1uV6U8DGpMFX9ZPhhboD55
+##    rooms:
+##      - leanintuit:4TbhlQX6AdNBl5hTK0PubKnh#engineering_training
+#    on_success: always
+#    on_failure: always
+#   email:
+#    - jayveyor@gmail.com
 
 
   
