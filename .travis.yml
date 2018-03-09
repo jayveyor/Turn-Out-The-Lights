@@ -8,11 +8,9 @@ install: npm install
 script:
 - node index.js
 notifications:
-#  slack:
-#    rooms:
-#      - leanintuit:4TbhlQX6AdNBl5hTK0PubKnh#engineering_training
-#    on_success: always
-#    on_failure: always
+  slack: buildingpipelines:PB1uV6U8DGpMFX9ZPhhboD55
+    on_success: always
+    on_failure: always
    email:
     - jayveyor@gmail.com
   
