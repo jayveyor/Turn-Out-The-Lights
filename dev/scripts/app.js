@@ -35,6 +35,8 @@ class App extends React.Component {
       locationX: 0,
       locationY: 0,
       pain:1,
+      ghoulFound: false,
+      battery1Found: false,
       objectGathered: false,
       // nameCharacter: ''
       mute:false,
@@ -125,60 +127,16 @@ class App extends React.Component {
       console.log(error)
     });
   }
-// To be imlemented in the future for the user page/character text
-  // typeIn () {
-  //   //function call to make typing happen will have to place into window init function
-  //   sort('letter1', 300);
-  //   sort('letter2', 800);
-    
-
-  //   //function for copying letters in paragragh to array and starting the typing method call
-  //   function sort(className, delay) {
-  //     let letters1 = $(`.${className}`).text().split('');
-  //     $(`.${className}`).text('');
-  //     setTimeout(typing, delay, `${className}`, letters1);
-  //   }
-
-  //   //function to star pushing characters to be typed
-  //   function typing(para, letters) {
-
-  //     function type(input, inputArray) {
-
-  //       $(`.${input}`).append(`<span>${inputArray[index]}</span>`);
-  //       index = index + 1;
-
-  //       if (index == inputArray.length) {
-  //         //stop call of setInterval Method
-  //         clearInterval(interval);
-  //       }
-  //     }
-
-  //     //variables for tracking
-  //     const counter = 0;
-  //     var index;
-
-  //     index = counter;
-  //     var interval = setInterval(type, 80, para, letters);
-  //   }
-  // }
-
   componentDidMount() {
 
+    var obj = document.createElement("audio");
+    obj.src = "background4.wav";
+    obj.volume = .7;
+    obj.loop = true;
+    obj.preLoad = true;
+    obj.play();
+
     firebase.auth().onAuthStateChanged((user) => {
-
-
-      var obj = document.createElement("audio");
-      obj.src = "background4.wav";
-      obj.volume = .7;
-      obj.loop = true;
-      obj.preLoad = true;
-      if (this.state.mute === true) {
-        obj.pause();
-        console.log('wow')
-      } else {
-        obj.play();
-        console.log('wowasdas')
-      }
       
       if (user) {
        const dbref = firebase.database().ref(`/users/${firebase.auth().currentUser.uid}`);
@@ -364,7 +322,7 @@ class App extends React.Component {
   }
 
   collectBattery(){
-    if (this.state.battery === 0) {
+    if (this.state.battery === 0 && this.state.batteryLife === 0) {
       this.setState({
         batteryLife: 4,
       });
@@ -488,10 +446,11 @@ class App extends React.Component {
       location = (<div className="background location3"></div>
       )
       // first room
+      gameObject = (<img className="battery" onClick={this.collectBattery} src="battery.png" alt="A Battery!" />)
       buttons = (
         <div className="navigation">
           <div className="grid">
-            <button className="moveForward" onClick={this.moveForward}>up</button>
+            <button disabled className="moveForward" onClick={this.moveForward}>up</button>
             <button className="moveLeft" onClick={this.moveLeft}>left</button>
             <button disabled className="moveRight" onClick={this.moveRight}>right</button>
             <button disabled className="moveBack" onClick={this.moveBack}>back</button>
@@ -500,10 +459,7 @@ class App extends React.Component {
     } else if (this.state.locationX === 1 && this.state.locationY === 3) {
       location = (<div className="background location4"></div>
       )
-      // battery room
-      gameObject = (<img className="battery" onClick={this.collectBattery} src="battery.png" alt="A Battery!" />)
-
-      buttons = (
+         buttons = (
         <div className="navigation">
           <div className="grid">
             <button disabled className="moveForward" onClick={this.moveForward}>up</button>
@@ -539,17 +495,17 @@ class App extends React.Component {
           </div></div>
       )
     }  else if (this.state.locationX === -1 && this.state.locationY === 4) {
-      gameObject = (<img className ="ghoul" onClick={this.youWin} src="ghoul.png" alt="Someone"/> )
-      location = (<div className="background location7"></div>
+      gameObject = (<img className ="ghoul" onClick={this.objectGathered} src="ghoul.png" alt="Someone"/> )
+      location = (<div className="background location5"></div>
       )
       // end room
       buttons = (
         <div className="navigation">
           <div className="grid">
-            <button disabled className="moveForward" onClick={this.moveForward}>up</button>
+            <button className="moveForward" onClick={this.moveForward}>up</button>
             <button disabled className="moveLeft" onClick={this.moveLeft}>left</button>
             <button disabled className="moveRight" onClick={this.moveRight}>right</button>
-            <button disabled className="moveBack" onClick={this.moveBack}>back</button>
+            <button className="moveBack" onClick={this.moveBack}>back</button>
           </div></div>
       )
     } else {

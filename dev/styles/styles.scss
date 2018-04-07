@@ -1,6 +1,5 @@
 @import "partials/_normalize.scss";
 @import "partials/_variables.scss";
-@import "partials/_main.scss";
 body {
     background-color: black;
     color: white;
@@ -356,15 +355,16 @@ body {
 
 .ghoul {
     position: absolute; 
-    left: 35%;
-    top: 25%;
-    height: 300px;
+    left: 45%;
+    top: 35%;
+    height: 200px;
 }
 
 .battery {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 45%;
+    top: 55%;
+    width: 50px;
 }
 
 .navigation {
@@ -543,7 +543,7 @@ animation: fade-out 2s ease-out both;
 }
 
 .location3 {
-    background-image: url("../../Locationx1y2.png");
+    background-image: url("../../office.png");
 }
 
 .location4 {
